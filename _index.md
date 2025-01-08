@@ -746,7 +746,136 @@ if __name__ == "__main__":
     main()
 ```
 
+Iets te veel wijzigingen om uit te leggen, maar...
+
 ### 15. Waar blijft de nieuwjaarswens?
+
+Gaan we meteen aan werken:
+
+```python
+import turtle
+from time import sleep
+from random import randint
+from math import sin, cos, pi
+
+aantal_vuurpijlen = 10
+stukken = 11
+start_positie = (0, -390)
+
+class Vuurpijl:
+    def __init__(self, kleur, plaats, snelheid):
+        self.turtle = turtle.Turtle()
+        self.turtle.hideturtle()
+        self.turtle.color(*kleur)
+        self.color = kleur
+        self.plaats_horizontaal = plaats[0]
+        self.plaats_verticaal = plaats[1]
+        self.snelheid_horizontaal = snelheid[0]
+        self.snelheid_verticaal = snelheid[1]
+        self.vanaf_de_grond = plaats == start_positie
+        self.zwaartekracht = 0.06
+
+    def beweeg(self):
+        self.plaats_verticaal = self.plaats_verticaal + self.snelheid_verticaal
+        self.plaats_horizontaal = self.plaats_horizontaal + self.snelheid_horizontaal
+        self.snelheid_verticaal = self.snelheid_verticaal - self.zwaartekracht
+        self.turtle.clear()
+        self.turtle.penup()
+        self.turtle.setposition(self.plaats_horizontaal, self.plaats_verticaal)
+        self.turtle.pendown()
+        self.turtle.dot(5)
+
+    def is_boven(self):
+        return self.snelheid_verticaal < 0
+
+    def positie(self):
+        return self.plaats_horizontaal, self.plaats_verticaal
+
+    def snelheid(self):
+        return self.snelheid_horizontaal, self.snelheid_verticaal
+
+    def clear(self):
+        self.turtle.clear()
+
+    def is_vanaf_de_grond(self):
+        return self.vanaf_de_grond
+    
+    def kleur(self):
+        return self.color
+
+def zomaar_een_kleur():
+    return randint(1, 255), randint(1, 255), randint(1, 255)
+
+
+def zomaar_een_richting_en_snelheid(snelheid, i):
+    hoek = i * 180 / stukken
+    return (snelheid[0] + 1 * sin(pi * hoek),
+            snelheid[1] + 1 * cos(pi * hoek))
+
+
+def main():
+    window = turtle.Screen()
+    window.setup(800, 800)
+    window.colormode(255)
+    window.tracer(0)
+    window.bgcolor("black")
+
+    text = turtle.Turtle()
+    text.hideturtle()
+    text.color("gold")
+    text.penup()
+    text.setposition((0, -200))
+    text.pendown()
+    text.write("Gelukkig 2025!", font=("serif", 70, "normal"), align="center")
+
+    vuurpijlen = []
+    while True:
+        for vuurpijl in vuurpijlen:
+            vuurpijl.beweeg()
+            if vuurpijl.is_vanaf_de_grond() and vuurpijl.is_boven():
+                vuurpijl.clear()
+                for j in range(stukken):
+                    vuurpijlen.append(Vuurpijl(vuurpijl.kleur(), vuurpijl.positie(),
+                                               zomaar_een_richting_en_snelheid(vuurpijl.snelheid(), j)))
+                vuurpijlen.remove(vuurpijl)
+            if vuurpijl.positie()[1] < -400:
+                vuurpijlen.remove(vuurpijl)
+        if len(vuurpijlen) < aantal_vuurpijlen:
+            vuurpijlen.append(Vuurpijl(zomaar_een_kleur(), start_positie, (randint(-15, 15) / 10, 6 + randint(20, 30) / 10)))
+        window.update()
+        sleep(0.02)
+
+if __name__ == "__main__":
+    main()
+```
+
+Wat is er veranderd?
+
+```python
+    text = turtle.Turtle()
+    text.hideturtle()
+    text.color("gold")
+    text.penup()
+    text.setposition((0, -200))
+    text.pendown()
+    text.write("Gelukkig 2025!", font=("serif", 70, "bold"), align="center")
+```
+
+#### Opdrachten
+
+Met alles wat je in de voorgaande stappen hebt geleerd, kun je het volgende proberen?
+
+1. Verander de kleur van de tekst in rood of een andere kleur.
+2. Kun je de tekst boven in het window plaatsen?
+3. Verander de tekst naar je eigen nieuwjaarswens. Als de tekst te groot kun je het kleiner maken door getal 70 op 
+  regel 7 te verlagen.
+
+### Het eindresultaat
+
+We hebben vandaag veel gedaan en hopelijk heb je veel geleerd!
+
+CoderDojo wenst je een...
+![Gelukkig 2025!](plaatjes/gelukkig-2025.gif)
 
 
 
