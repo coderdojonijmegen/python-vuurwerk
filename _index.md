@@ -28,14 +28,14 @@ En vergeet vooral geen hulp te vragen aan de mentoren. 😉
 
 We beginnen met het maken van een vuurpijl die de lucht in schiet. Dat gaan we in stappen doen:
 
-### 1. We maken een window
+### 1. We maken een venster
 Neem het volgende over in Thonny:
 ```python
 import turtle
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 ```
 
 ![Thonny scherm](plaatjes/thonny-scherm.png)  
@@ -43,7 +43,7 @@ window.tracer(0)
 Druk op het groene knopje of F5 om het programma uit te proberen. 
 ![Thonny uitvoerknop](plaatjes/thonny-uitvoerknop.png)
 
-**Let op!** als je het window niet met het kruisje rechts boven af kunt sluiten, gebruik dan de rode stopknop in Thonny. 
+**Let op!** als je het venster niet met het kruisje rechts boven af kunt sluiten, gebruik dan de rode stopknop in Thonny. 
 
 
 ### 2. En een zwarte punt dat later de pijl wordt
@@ -51,9 +51,9 @@ Druk op het groene knopje of F5 om het programma uit te proberen.
 ```python
 import turtle
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 vuurpijl = turtle.Turtle()
 vuurpijl.dot(5)
@@ -62,7 +62,7 @@ Voer het programma uit. Zie je de zwarte punt?
 
 #### Opdrachten
 
-1. pas een of beide getallen 800 in `window.setup(800, 800)` eens aan. Wat gebeurt er?
+1. pas een of beide getallen 800 in `venster.setup(800, 800)` eens aan. Wat gebeurt er?
 2. wat gebeurt er met de zwarte punt als je de 5 in `vuurpijl.dot(5)` verandert naar 10? Of naar 1?
 
 ### 3. De vuurpijl beweegt omhoog
@@ -70,9 +70,9 @@ Laten we eens kijken of we de punt naar boven kunnen laten bewegen.
 ```python
 import turtle
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 vuurpijl = turtle.Turtle()
 vuurpijl.dot(5)
@@ -85,16 +85,16 @@ Eigenlijk willen we dat de punt beweegt.
 #### Opdrachten
 
 `setposition` betekent: zet de positie van de Turtle.
-1. Zet de punten eens rechts in het window. Of juist links.
+1. Zet de punten eens rechts in het venster. Of juist links.
 2. Hoe kun je de positie van de punten omhoog of omlaag veranderen?
 
 ### 4. De vuurpijl beweegt nu echt omhoog
 ```python
 import turtle
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 vuurpijl = turtle.Turtle()
 
@@ -108,8 +108,8 @@ Staat de punt nog in het midden? Heb je het zien bewegen?
 - Met `for i in range(10):` herhalen we de 3 ingesprongen regels eronder 10 keer
 - `vuurpijl.clear()` verwijdert de laatst getekende punt, zodat je alleen de nieuwe, verschoven punt ziet
 - `vuurpijl.setposition(0, 15 * i)` plaatst de punt, hierbij bepaald:
-  - `0` de horizontale positie, waarbij 0 in het midden van het window is
-  - `15 * i` de verticale positie, waarbij ook hier 0 in het midden van het window is; door 15 x i te gebruiken 
+  - `0` de horizontale positie, waarbij 0 in het midden van het venster is
+  - `15 * i` de verticale positie, waarbij ook hier 0 in het midden van het venster is; door 15 x i te gebruiken 
     verschuift de punt wat verder naar boven dan alleen met i; overigens verandert i van 0 tot en met 9 met de herhaling
 
 #### Opdrachten
@@ -122,9 +122,9 @@ Staat de punt nog in het midden? Heb je het zien bewegen?
 import turtle
 from time import sleep
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 vuurpijl = turtle.Turtle()
 vuurpijl.hideturtle()
@@ -133,7 +133,7 @@ for i in range(100):
     vuurpijl.clear()
     vuurpijl.setposition(0, 3*i)
     vuurpijl.dot(5)
-    window.update()
+    venster.update()
     sleep(0.1)
 ```
 Je kunt de pijl nu echt zien bewegen, doordat
@@ -156,9 +156,9 @@ pijl veranderd. Maar een pijl beweegt meestal niet recht naar boven, maar eerder
 import turtle
 from time import sleep
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 vuurpijl = turtle.Turtle()
 vuurpijl.hideturtle()
@@ -167,7 +167,7 @@ for i in range(100):
     vuurpijl.clear()
     vuurpijl.setposition(i, 5*i)
     vuurpijl.dot(5)
-    window.update()
+    venster.update()
     sleep(0.1)
 ```
 Je ziet nu dat de pijl naar rechts boven verplaatst. Dit komt doordat we 0 met i hebben vervangen in 
@@ -186,9 +186,9 @@ Om zo makkelijker met meerdere pijlen te kunnen werken, moeten we de code even a
 import turtle
 from time import sleep
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 class Vuurpijl:
     def __init__(self):
@@ -209,7 +209,7 @@ class Vuurpijl:
 vuurpijl = Vuurpijl()
 for i in range(100):
     vuurpijl.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 ```
 Als je dit hebt uitgevoerd, zie je dat het nog steeds hetzelfde doet als bij stap 7. Dus wat is er nu eigenlijk 
@@ -230,7 +230,7 @@ veranderd en waarom?
 
 1. Speel eens met de waarden van `self.plaats_horizontaal`, `self.plaats_verticaal`, `self.snelheid_horizontaal`, 
 `self.snelheid_verticaal`?  
-2. Kun je de pijl ook van rechts boven in het window naar links onder laten bewegen? Wat moet daarvoor veranderen?
+2. Kun je de pijl ook van rechts boven in het venster naar links onder laten bewegen? Wat moet daarvoor veranderen?
 
 ### 8. Fijn, die voorbereiding, nu wil ik meerdere pijlen!
 
@@ -238,9 +238,9 @@ veranderd en waarom?
 import turtle
 from time import sleep
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 class Vuurpijl:
     def __init__(self):
@@ -263,7 +263,7 @@ vuurpijl2 = Vuurpijl()
 for i in range(100):
     vuurpijl1.beweeg()
     vuurpijl2.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 ```
 
@@ -282,9 +282,9 @@ meegeven:
 import turtle
 from time import sleep
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
 
 class Vuurpijl:
     def __init__(self, snelheid_horizontaal, snelheid_verticaal):
@@ -309,7 +309,7 @@ for i in range(100):
     vuurpijl1.beweeg()
     vuurpijl2.beweeg()
     vuurpijl3.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 ```
 ![3 vuurpijlen](plaatjes/3-vuurpijlen.gif)
@@ -343,10 +343,10 @@ lijken.
 import turtle
 from time import sleep
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
-window.bgcolor("black")
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
+venster.bgcolor("black")
 
 class Vuurpijl:
     def __init__(self, snelheid_horizontaal, snelheid_verticaal):
@@ -374,7 +374,7 @@ for i in range(200):
     vuurpijl2.beweeg()
     vuurpijl3.beweeg()
     vuurpijl4.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 ```
 Kijk:
@@ -384,7 +384,7 @@ Kijk:
 Wat is er veranderd?
 
 ```python
-window.bgcolor("black")
+venster.bgcolor("black")
 
 class Vuurpijl:
     def __init__(self, snelheid_horizontaal, snelheid_verticaal):
@@ -394,7 +394,7 @@ class Vuurpijl:
 
 ```
 
-De achtergrondkleur is zwart gemaakt door `window.bgcolor("black")` toe te voegen.  
+De achtergrondkleur is zwart gemaakt door `venster.bgcolor("black")` toe te voegen.  
 De pijlen zijn goudgeel geworden door `self.turtle.color("gold")` toe te voegen.
 
 #### Opdrachten
@@ -411,10 +411,10 @@ import turtle
 from time import sleep
 from random import randint
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
-window.bgcolor("black")
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
+venster.bgcolor("black")
 
 class Vuurpijl:
     def __init__(self, snelheid_horizontaal, snelheid_verticaal):
@@ -440,7 +440,7 @@ for _ in range(10):
 for i in range(200):
     for vuurpijl in vuurpijlen:
         vuurpijl.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 ```
 
@@ -465,7 +465,7 @@ for i in range(200):
   maar bij een volgende -4 en dan weer 9. Hierdoor kunnen we ervoor zorgen dat de pijlen met verschillende horizontale
   en verticale snelheden gaan bewegen.  
   We delen het resultaat door 10, omdat `randint` alleen maar gehele getallen teruggeeft, dus geen komma getallen zoals
-  1.5. -15 tot +15 zou een veel te grote horizontale snelheid opleveren en de pijlen links en rechts uit het window laten 
+  1.5. -15 tot +15 zou een veel te grote horizontale snelheid opleveren en de pijlen links en rechts uit het venster laten 
   vliegen. `randint(-15, 15)/10` levert getallen op tussen -1.5 en +1.5 wat beter werkt.
 - tenslotte halen we met `for vuurpijl in vuurpijlen:` één voor één de vuurpijlen uit het lijstje en roepen de 
   `vuurpijl.beweeg()` functie aan om de pijlen een stap te laten maken.
@@ -486,10 +486,10 @@ import turtle
 from time import sleep
 from random import randint
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.tracer(0)
-window.bgcolor("black")
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.tracer(0)
+venster.bgcolor("black")
 
 class Vuurpijl:
     def __init__(self, snelheid_horizontaal, snelheid_verticaal):
@@ -517,7 +517,7 @@ for _ in range(10):
 for i in range(300):
     for vuurpijl in vuurpijlen:
         vuurpijl.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 
 ```
@@ -552,11 +552,11 @@ import turtle
 from time import sleep
 from random import randint
 
-window = turtle.Screen()
-window.setup(800, 800)
-window.colormode(255)
-window.tracer(0)
-window.bgcolor("black")
+venster = turtle.Screen()
+venster.setup(800, 800)
+venster.colormode(255)
+venster.tracer(0)
+venster.bgcolor("black")
 
 class Vuurpijl:
     def __init__(self, kleur, snelheid_horizontaal, snelheid_verticaal):
@@ -587,7 +587,7 @@ for _ in range(10):
 for i in range(400):
     for vuurpijl in vuurpijlen:
         vuurpijl.beweeg()
-    window.update()
+    venster.update()
     sleep(0.02)
 ```
 
@@ -719,11 +719,11 @@ def zomaar_een_richting_en_snelheid(snelheid, i):
 
 
 def main():
-    window = turtle.Screen()
-    window.setup(800, 800)
-    window.colormode(255)
-    window.tracer(0)
-    window.bgcolor("black")
+    venster = turtle.Screen()
+    venster.setup(800, 800)
+    venster.colormode(255)
+    venster.tracer(0)
+    venster.bgcolor("black")
 
     vuurpijlen = []
     while True:
@@ -739,7 +739,7 @@ def main():
                 vuurpijlen.remove(vuurpijl)
         if len(vuurpijlen) < aantal_vuurpijlen:
             vuurpijlen.append(Vuurpijl(zomaar_een_kleur(), start_positie, (randint(-15, 15) / 10, 6 + randint(20, 30) / 10)))
-        window.update()
+        venster.update()
         sleep(0.02)
 
 if __name__ == "__main__":
@@ -814,11 +814,11 @@ def zomaar_een_richting_en_snelheid(snelheid, i):
 
 
 def main():
-    window = turtle.Screen()
-    window.setup(800, 800)
-    window.colormode(255)
-    window.tracer(0)
-    window.bgcolor("black")
+    venster = turtle.Screen()
+    venster.setup(800, 800)
+    venster.colormode(255)
+    venster.tracer(0)
+    venster.bgcolor("black")
 
     text = turtle.Turtle()
     text.hideturtle()
@@ -842,7 +842,7 @@ def main():
                 vuurpijlen.remove(vuurpijl)
         if len(vuurpijlen) < aantal_vuurpijlen:
             vuurpijlen.append(Vuurpijl(zomaar_een_kleur(), start_positie, (randint(-15, 15) / 10, 6 + randint(20, 30) / 10)))
-        window.update()
+        venster.update()
         sleep(0.02)
 
 if __name__ == "__main__":
@@ -866,7 +866,7 @@ Wat is er veranderd?
 Met alles wat je in de voorgaande stappen hebt geleerd, kun je het volgende proberen?
 
 1. Verander de kleur van de tekst in rood of een andere kleur.
-2. Kun je de tekst boven in het window plaatsen?
+2. Kun je de tekst boven in het venster plaatsen?
 3. Verander de tekst naar je eigen nieuwjaarswens. Als de tekst te groot kun je het kleiner maken door getal 70 op 
   regel 7 te verlagen.
 
