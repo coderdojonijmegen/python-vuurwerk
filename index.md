@@ -184,9 +184,9 @@ Je ziet nu dat de pijl zich naar rechtsboven verplaatst. Dit komt doordat we 0 m
 1. Wat gebeurt er nu als je `-i` gebruikt?  
 2. Of `-2 * i`?
 
-### 7. Voorbereiden voor meerdere pijlen
+### 7. Meer vuurpijlen
 
-Om zo makkelijker met meerdere pijlen te kunnen werken, moeten we de code even aanpassen:
+Om zometeen makkelijker meerdere vuurpijlen af te kunnen steken, gaan we nu de code anders indelen. We gaan `objecten` en `classes` gebruiken:
 
 ```python
 import turtle
@@ -221,24 +221,21 @@ for i in range(100):
 Als je dit hebt uitgevoerd, zie je dat het nog steeds hetzelfde doet als bij stap 7. Dus wat is er nu eigenlijk 
 veranderd en waarom?
 
-- allereerst is de vuurpijl code in een "class" gestopt. Een class beschrijft de eigenschappen en gedrag van de vuurpijl.
-  - in functie `__init__(self)` worden een aantal begin eigenschappen bepaald, zoals de horizontale en verticale plaats
-    en snelheid
-  - in functie `beweeg(self)` staat het gedrag van de vuurpijl. Bij iedere aanroep worden de horizontale en verticale
-    plaats bepaald door er de horizontale en verticale snelheden bij op te tellen. Dan wordt de positie van de vuurpijl
-    gezet met `self.turtle.setposition(self.plaats_horizontaal, self.plaats_verticaal)` en tenslotte getekend met
+- Allereerst is de code voor de vuurpijl in een "class" gestopt. Een class beschrijft de eigenschappen en het gedrag van de vuurpijl.
+  - In de functie `__init__(self)` worden een aantal begin eigenschappen bepaald, zoals de horizontale en verticale plaats en snelheid.
+  - In de functie `beweeg(self)` staat het gedrag van de vuurpijl. Iedere keer dat `beweeg()` wordt aangeroepen, worden de horizontale en verticale plaats bepaald door er de horizontale en verticale *snelheden* bij op te tellen. 
+  - Dan krijgt de vuurpijl een positie met `self.turtle.setposition(self.plaats_horizontaal, self.plaats_verticaal)` en tenslotte getekend met
     `self.turtle.dot(5)`. 
-- dan wordt er een "instantie" van de class Vuurpijl gemaakt: `vuurpijl = Vuurpijl()`. `vuurpijl` is nu een object van
-  class `Vuurpijl` en heeft het gedrag van `Vuurpijl`. Door functie `vuurpijl.beweeg()` aan te roepen, gaat de vuurpijl
-  bewegen.
+- Dan maken we een "instantie" van de class Vuurpijl: `vuurpijl = Vuurpijl()`. `vuurpijl` is nu een object van class `Vuurpijl` en heeft het gedrag van `Vuurpijl`. Door functie `vuurpijl.beweeg()` aan te roepen, gaat de vuurpijl bewegen.
+
 
 #### Opdrachten
 
 1. Speel eens met de waarden van `self.plaats_horizontaal`, `self.plaats_verticaal`, `self.snelheid_horizontaal`, 
 `self.snelheid_verticaal`?  
-2. Kun je de pijl ook van rechts boven in het venster naar links onder laten bewegen? Wat moet daarvoor veranderen?
+2. Kun je de pijl ook van rechtsboven in het venster naar linksonder laten bewegen? Wat moet daarvoor veranderen?
 
-### 8. Fijn, die voorbereiding, nu wil ik meerdere pijlen!
+### 8. Fijn die voorbereiding, maar nu wil ik meerdere pijlen!
 
 ```python
 import turtle
@@ -273,16 +270,15 @@ for i in range(100):
     sleep(0.02)
 ```
 
-Zie je `vuurpijl1` en `vuurpijl2`? Dat is alles wat er nodig is om 2 vuurpijlen te maken. Super handig!
+Zie je `vuurpijl1` en `vuurpijl2`? Dat is alles wat er nodig is om twee vuurpijlen te maken. Superhandig!
 
-Maar zie je ook 2 pijlen? Hoe zou het kunnen dat je er maar 1 ziet?
+Maar zíe je ze ook?? Hoe zou het komen dat je er maar één ziet?
 
 ### 9. Nu echt meerdere pijlen!
 
-Doordat bij stap 8 de 2 pijlen beiden op dezelfde plaats beginnen en precies dezelfde kant op gaan met dezelfde snelheid,
-kun je niet zien dat het er echt 2 zijn.  
-Om dit op te lossen kunnen de code aanpassen zodat we voor iedere pijl de horizontale en verticale snelheid kunnen
-meegeven:
+Doordat bij stap 8 de twee pijlen beiden op dezelfde plaats beginnen en precies dezelfde kant op gaan met dezelfde snelheid, kun je niet zien dat het er echt 2 zijn.
+
+Om dat op te lossen, kunnen we de code aanpassen zodat we iedere pijl een eigen horizontale en verticale snelheid kunnen geven:
 
 ```python
 import turtle
@@ -322,16 +318,14 @@ for i in range(100):
 
 Wat is er veranderd?
 
-- functie `__init__` heeft argumenten `snelheid_horizontaal` en `snelheid_verticaal` gekregen, waardoor je iedere 
-  vuurpijl een andere richting en snelheid kunt geven
-- er zijn nu 3 vuurpijlen met verschillende snelheden. Je ziet dat pijl 1 een horizontale snelheid -1 heeft. Deze beweegt
-  naar links. Pijl 2 heeft 0 en beweegt recht naar boven en pijl 3 met horizontale snelheid 1 beweegt naar rechts
+- Functie `__init__` heeft de argumenten `snelheid_horizontaal` en `snelheid_verticaal` gekregen, waardoor je iedere vuurpijl een andere richting en snelheid kunt geven.
+- Er zijn nu drie vuurpijlen met verschillende snelheden. Je ziet dat de eerste pijl een horizontale snelheid -1 heeft. Die beweegt daardoor naar links. De tweede pijl heeft een snelheid van 0 en beweegt recht naar boven, en pijl drie met horizontale snelheid 1 beweegt naar rechts.
 
 #### Opdrachten
 
-Speel eens met de waarden voor de vuurpijlen en kijk wat er gebeurd? 
+Speel eens met de waarden voor de vuurpijlen en kijk wat er gebeurt.
 
-Wat gebeurt er als je dit gebruikt? Vergeet je niet `vuurpijl4` ook te laten bewegen?
+Wat gebeurt er als je dit gebruikt? (Vergeet niet `vuurpijl4` ook te laten bewegen.)
 
 ```python
 vuurpijl1 = Vuurpijl(1, 3)
@@ -342,8 +336,7 @@ vuurpijl4 = Vuurpijl(-1, -3)
 
 ### 10. Dit lijkt helemaal niet op vuurwerk!
 
-Klopt! We hebben wat voorbereidend werk moeten doen en gaan nu eens kijken of we het meer op vuurwerk kunnen laten
-lijken.
+Klopt! We hebben wat voorbereidend werk moeten doen en nu gaan we eens kijken of we het meer op vuurwerk kunnen laten lijken.
 
 ```python
 import turtle
@@ -410,7 +403,7 @@ De pijlen zijn goudgeel geworden door `self.turtle.color("gold")` toe te voegen.
 
 ### 11. Meer pijlen! Ik wil meer pijlen!
 
-Met alle werk dat we hebben gedaan, kunnen we nu makkelijk nog meer pijlen toevoegen:
+Met al het werk dat we hebben gedaan, kunnen we nu makkelijk nog meer pijlen toevoegen:
 
 ```python
 import turtle
@@ -465,16 +458,13 @@ for i in range(200):
 
 ```
 
-- `vuurpijlen = []`: allereerst maken een we een lijst aan waarin we de vuurpijlen bewaren
-- `for _ range(10):`: dan voegen we 10 pijlen aan het lijstje toe
-- functie `randint(-15, 15)` geeft zomaar een getal tussen -15 en 15 terug, dus bij een eerste aanroep bijvoorbeeld 3, 
-  maar bij een volgende -4 en dan weer 9. Hierdoor kunnen we ervoor zorgen dat de pijlen met verschillende horizontale
+- Allereerst maken we een lijst aan waarin we de vuurpijlen bewaren: `vuurpijlen = []`
+- Met `for _ range(10):` voegen we tien pijlen toe aan het lijstje.
+- De functie `randint(-15, 15)` geeft steeds een ander getal tussen -15 en 15, dus eerst bijvoorbeeld 3, dan -4 en dan weer 9. Hierdoor kunnen we ervoor zorgen dat de pijlen met verschillende horizontale
   en verticale snelheden gaan bewegen.  
-  We delen het resultaat door 10, omdat `randint` alleen maar gehele getallen teruggeeft, dus geen komma getallen zoals
-  1.5. -15 tot +15 zou een veel te grote horizontale snelheid opleveren en de pijlen links en rechts uit het venster laten 
-  vliegen. `randint(-15, 15)/10` levert getallen op tussen -1.5 en +1.5 wat beter werkt.
-- tenslotte halen we met `for vuurpijl in vuurpijlen:` één voor één de vuurpijlen uit het lijstje en roepen de 
-  `vuurpijl.beweeg()` functie aan om de pijlen een stap te laten maken.
+  We delen het resultaat door 10, omdat `randint` alleen maar gehele getallen teruggeeft, dus geen komma-getallen zoals 1.5. -15 tot +15 zou ook een veel te grote horizontale snelheid opleveren en de pijlen links en rechts uit het venster laten 
+  schieten. `randint(-15, 15)/10` levert getallen op tussen -1.5 en +1.5 en dat werkt beter.
+- Tenslotte halen we met `for vuurpijl in vuurpijlen:` één voor één de vuurpijlen uit het lijstje en roepen we voor elke vuurpijl de functie `vuurpijl.beweeg()` aan om elke pijl verder te laten bewegen.
 
 #### Opdrachten
 
@@ -528,7 +518,7 @@ for i in range(300):
 
 ```
 
-Met de belangrijkste wijzigingen:
+Dit zijn de belangrijkste wijzigingen:
 
 ```python
 class Vuurpijl:
@@ -539,14 +529,13 @@ class Vuurpijl:
         self.snelheid_verticaal = self.snelheid_verticaal - self.zwaartekracht
 ```
 
-Hier zie je een variabele met de zwaartekracht met waarde 0.06. Deze wordt bij iedere keer dat het vuurwerk getekend
-wordt, van de verticale snelheid afgetrokken. Daardoor gaat de vuurpijl steeds langzamer omhoog en uiteindelijk weer
-naar beneden.
+Hier zie je een variabele met de zwaartekracht met waarde 0.06. Die waarde wordt elke keer dat we het vuurwerk tekenen van de verticale snelheid afgetrokken. Daardoor gaat de vuurpijl steeds langzamer omhoog om uiteindelijk weer
+naar beneden te vallen.
 
 #### Opdrachten
 
 1. Wat gebeurt er als je de zwaartekracht vergroot? Bijvoorbeeld naar waarde 0.1?
-2. Of verkleind naar bijvoorbeeld waarde 0.04?
+2. Of verkleint naar bijvoorbeeld waarde 0.04?
 
 ### 13. Doe maar verschillende pijlen
 
@@ -600,7 +589,10 @@ for i in range(400):
 {{< verdieping >}}
 <strong>R G B</strong>  
 
-Beeldschermen kunnen eigenlijk maar 3 kleuren maken: rood, groen en blauw. Door deze samen te mengen kun je alle andere kleuren maken:
+Beeldschermen kunnen eigenlijk maar drie kleuren maken: rood, groen en blauw. Door die kleuren te mengen kun je alle andere kleuren maken.
+
+In deze tabel zie je links de hoeveelheden van iedere kleur en rechts welke kleur het mengsel oplevert. Voor
+iedere kleur kun je een waarde van 0 tot en met 255 gebruiken:
 <style>
   td { border: 1px solid grey; } 
 </style>
@@ -621,9 +613,7 @@ Beeldschermen kunnen eigenlijk maar 3 kleuren maken: rood, groen en blauw. Door 
     <tr><td>255</td><td>255</td><td>255</td><td style="background-color: #FFFFFF"></td></tr>
   </body>
 </table>
-  
-In bovenstaande tabel zie je links de hoeveelheden van iedere kleur en rechts welke kleur het mengsel oplevert. Voor
-iedere kleur kun je een waarde van 0 tot en met 255 gebruiken.  
+
 Als je geen van de kleuren gebruikt, krijg je zwart!  
 Gebruik je ze allemaal maximaal, dan krijg je wit!  
 **Samen kun je daarmee ruim 16 miljoen verschillende kleuren maken!**
@@ -645,23 +635,21 @@ for _ in range(10):
 
 ```
 
-- Met parameter `kleur` in `def __init__(self, kleur, snelheid_horizontaal, snelheid_verticaal):` kunnen een kleur meegeven
-  aan de vuurpijl
-- We willen voor iedere vuurpijl een andere kleur, dus maakt `def zomaar_een_kleur():` iedere keer een ander mengsel als
-  je het aanroept. Zoals eerder verteld, maakt `randint(0, 255)` zomaar een getal en in dit geval tussen 0 en 255.
+- Met parameter `kleur` in `def __init__(self, kleur, snelheid_horizontaal, snelheid_verticaal):` geven we een kleur aan de vuurpijl.
+- We willen voor iedere vuurpijl een andere kleur, dus maakt `def zomaar_een_kleur():` iedere keer als
+  je het aanroept een andere mengkleur. Zoals eerder gezegd, maakt `randint(0, 255)` zomaar een getal en in dit geval tussen 0 en 255.
 - Als we tenslotte de pijl maken met `vuurpijlen.append(Vuurpijl(zomaar_een_kleur(), randint(-15, 15)/10, 6 + randint(20, 30)/10))`
-  geven we daar het resultaat van functie `zomaar_een_kleur()` mee. Hierdoor heeft iedere vuurpijl een andere kleur.
+  gebruiken we het resultaat van `zomaar_een_kleur()`. Daardoor heeft iedere vuurpijl een andere kleur.
 
 #### Opdracht
 
-1. Je kunt hier niet veel mee experimenteren, maar voor het programma eens meerdere keren uit en kijken of de kleuren iedere
-  keer anders zijn?
+Voer het programma meerdere keren uit. Klopt het dat de kleuren iedere keer anders zijn?
 
 ### 14. Deze pijlen ploffen niet uit elkaar... ☹️
 
-Of toch wel, maar dan moet je nog wel heel wat aanpassen aan de code...
+Of toch wel, maar dan moet je nog wel heel wat aan de code veranderen...
 
-Kopieer en plak deze code maar in Thonny en je zult het zien!
+Kopiëer en plak deze code maar in Thonny en je zult het zien!
 
 ```python
 import turtle
@@ -869,12 +857,11 @@ Wat is er veranderd?
 
 #### Opdrachten
 
-Met alles wat je in de voorgaande stappen hebt geleerd, kun je het volgende proberen?
+Met alles wat je in de voorgaande stappen hebt geleerd, kun je het volgende proberen.
 
 1. Verander de kleur van de tekst in rood of een andere kleur.
 2. Kun je de tekst boven in het venster plaatsen?
-3. Verander de tekst naar je eigen nieuwjaarswens. Als de tekst te groot kun je het kleiner maken door getal 70 op 
-  regel 7 te verlagen.
+3. Verander de tekst naar je eigen nieuwjaarswens. Als de tekst te groot wordt, kun je de letters kleiner maken door getal 70 op regel 7 te verlagen.
 
 ### Het eindresultaat
 
