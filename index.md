@@ -13,12 +13,12 @@ Dit is de eerste dojo in het nieuwe jaar 2025 en we maken deze keer vuurwerk!
 
 ![Happy new year](happy-new-year.gif)
 
-Bij oud en nieuw hoort vuurwerk, dus deze keer maken we met Python en de Turtle bibliotheek zelf ons vuurwerk.
+Bij oud en nieuw hoort vuurwerk, dus deze keer maken we zelf ons vuurwerk met Python en de Turtle-bibliotheek.
 
-Deze instructie is vrij uitgebreid en maakt gebruik van technieken die onbekend zijn voor beginners. Maar, als de
-code goed wordt gekopieerd en plakt, moet het lukken iets werkends te krijgen zonder dat je precies begrijpt hoe het
+Deze instructie is vrij uitgebreid en maakt gebruik van technieken die onbekend zijn voor beginners. Maar als je de
+code goed kopiëert en plakt, dan moet het lukken iets werkends te krijgen zelfs als je niet meteen begrijpt hoe het
 werkt.  
-En vergeet vooral geen hulp te vragen aan de mentoren. 😉
+En vraag vooral de mentoren om hulp! 😉
 
 ## Thonny installeren
 
@@ -26,7 +26,7 @@ En vergeet vooral geen hulp te vragen aan de mentoren. 😉
 
 ## 🎆 Vuurwerk maken!
 
-We beginnen met het maken van een vuurpijl die de lucht in schiet. Dat gaan we in stappen doen:
+We beginnen met het maken van een vuurpijl die de lucht in schiet. Dat gaan we in stappen doen.
 
 ### 1. We maken een venster
 Neem het volgende over in Thonny:
@@ -40,13 +40,15 @@ venster.tracer(0)
 
 ![Thonny scherm](plaatjes/thonny-scherm.png)  
 
-Druk op het groene knopje of F5 om het programma uit te proberen. 
+Druk op het groene knopje (of F5) om het programma uit te proberen. 
 ![Thonny uitvoerknop](plaatjes/thonny-uitvoerknop.png)
 
-**Let op!** als je het venster niet met het kruisje rechts boven af kunt sluiten, gebruik dan de rode stopknop in Thonny. 
+**Let op!** 
+- Het kan zijn dat het Turtle-venster opent áchter Thonny. In dat geval moet je zelf van venster wisselen. Je kunt ook de twee vensters naast elkaar zetten.
+- Gebruik de rode stopknop in Thonny als je het venster niet met het kruisje rechtsboven kunt afsluiten.
 
 
-### 2. En een zwarte punt dat later de pijl wordt
+### 2. Maak een zwarte punt die later de vuurpijl wordt
 
 ```python
 import turtle
@@ -62,8 +64,8 @@ Voer het programma uit. Zie je de zwarte punt?
 
 #### Opdrachten
 
-1. pas een of beide getallen 800 in `venster.setup(800, 800)` eens aan. Wat gebeurt er?
-2. wat gebeurt er met de zwarte punt als je de 5 in `vuurpijl.dot(5)` verandert naar 10? Of naar 1?
+1. Pas één of beide getallen in `venster.setup(800, 800)` eens aan. Wat gebeurt er?
+2. Wat gebeurt er met de zwarte punt als je de 5 in `vuurpijl.dot(5)` verandert naar 10? Of naar 1?
 
 ### 3. De vuurpijl beweegt omhoog
 Laten we eens kijken of we de punt naar boven kunnen laten bewegen.
@@ -79,16 +81,21 @@ vuurpijl.dot(5)
 vuurpijl.setposition(0, 50)
 vuurpijl.dot(5)
 ```
-Als je dit uitvoert, zie je twee punten met een dunne lijn er tussen. Dat is niet helemaal wat we willen.
-Eigenlijk willen we dat de punt beweegt.
+Als je dit uitvoert, zie je twee punten met een dunne lijn er tussen.
 
 #### Opdrachten
 
-`setposition` betekent: zet de positie van de Turtle.
+`setposition` betekent: doe iets op deze locatie. De twee getallen zijn de horizontale positie en de verticale positie. Het eerste getal is het aantal pixels rechts van het midden van het scherm en het tweede getal is het aantal pixels bóven het midden.
+
 1. Zet de punten eens rechts in het venster. Of juist links.
 2. Hoe kun je de positie van de punten omhoog of omlaag veranderen?
 
-### 4. De vuurpijl beweegt nu echt omhoog
+
+### 4. De vuurpijl omhoog laten bewegen
+
+Maar twee punten met een lijn ertussen is niet helemaal wat we willen. Eigenlijk willen we dat de punt beweegt! 
+Laten we de punt eerst stap voor stap omhoog verplaatsen:
+
 ```python
 import turtle
 
@@ -103,22 +110,20 @@ for i in range(10):
     vuurpijl.setposition(0, 15 * i)
     vuurpijl.dot(5)
 ```
-Staat de punt nog in het midden? Heb je het zien bewegen?  
-Jammer genoeg niet. Daar moeten we in de volgende stap nog wat voor doen.
+Zie je dat de punt naar boven is verplaatst? 
 
-- Met `for i in range(10):` herhalen we de 3 ingesprongen regels eronder 10 keer
-- `vuurpijl.clear()` verwijdert de laatst getekende punt, zodat je alleen de nieuwe, verschoven punt ziet
-- `vuurpijl.setposition(0, 15 * i)` plaatst de punt, hierbij bepaald:
-  - `0` de horizontale positie, waarbij 0 in het midden van het venster is
-  - `15 * i` de verticale positie, waarbij ook hier 0 in het midden van het venster is; door 15 x i te gebruiken 
-    verschuift de punt wat verder naar boven dan alleen met i; overigens verandert i van 0 tot en met 9 met de herhaling
+- Met `for i in range(10):` herhalen we de 3 ingesprongen regels eronder 10 keer.
+- `vuurpijl.clear()` verwijdert de laatst getekende punt, zodat je alleen de nieuwe, verschoven punt ziet.
+- `vuurpijl.setposition(0, 15 * i)` plaatst de punt:
+  - `0` is de horizontale positie, dus hij blijft in het midden van het venster,
+  - `15 * i` bepaalt de verticale positie: in deze for-loop gaat we 10 keer 15 pixels omhoog.
 
 #### Opdrachten
 
-1. Wat gebeurt er als je de horizontale positie veranderd? Dus de 0 in `vuurpijl.setposition(0, 15 * i)` veranderd in 40 of -40?
-2. En als je de 15 in `vuurpijl.setposition(0, 15 * i)` vergroot of verkleint of juist negatief maakt?
+1. Wat gebeurt er als je de horizontale positie verandert? Dus als je de 0 in `vuurpijl.setposition(0, 15 * i)` verandert in bijvoorbeeld 40 of -40?
+2. En als je 15 in `vuurpijl.setposition(0, 15 * i)` groter of kleiner of juist negatief maakt?
 
-### 5. En nu dat je de vuurpijl echt ziet bewegen
+### 5. En nu de vuurpijl echt zien bewegen
 ```python
 import turtle
 from time import sleep
@@ -139,19 +144,19 @@ for i in range(100):
 ```
 Je kunt de pijl nu echt zien bewegen, doordat
 
-- er meer stappen worden gezet
-- er tussen iedere stap even wordt gewacht door het `sleep(0.1)` commando
+- er meer stappen worden gezet en
+- er tussen iedere stap even wordt gewacht door het commando `sleep(0.1)`.
 
 #### Opdrachten
 
-1. Wat gebeurt er als je het aantal stappen verandert door 100 in `range(100)` te vervangen door 50 of juist 150?  
-2. Of wanneer je het getal in `sleep(0.1)` verandert van 0.1 naar 0.02 of juist 0.2?  
+1. Wat gebeurt er als je het aantal stappen verandert door 100 in `range(100)` vervangt door 50 of juist 150?  
+2. Of wanneer je het getal in `sleep(0.1)` verkleint naar 0.02 of juist vergroot naar 0.2?  
 3. Of wanneer je het getal 3 in `vuurpijl.setposition(0, 3*i)` verandert naar 2 of 5?
 
 ### 6. Een pijl beweegt meestal niet recht naar boven
 
 We hebben in stap 4 gezien dat het aanpassen van de 0 in `vuurpijl.setposition(0, 3*i)` de horizontale positie van de
-pijl veranderd. Maar een pijl beweegt meestal niet recht naar boven, maar eerder wat schuin:
+pijl verandert. Maar een pijl beweegt meestal niet recht naar boven, maar eerder wat schuin:
 
 ```python
 import turtle
@@ -171,7 +176,7 @@ for i in range(100):
     venster.update()
     sleep(0.1)
 ```
-Je ziet nu dat de pijl naar rechts boven verplaatst. Dit komt doordat we 0 met i hebben vervangen in 
+Je ziet nu dat de pijl zich naar rechtsboven verplaatst. Dit komt doordat we 0 met i hebben vervangen in 
 `vuurpijl.setposition(0, 5*i)`.
 
 #### Opdrachten
