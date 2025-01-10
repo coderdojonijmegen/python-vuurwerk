@@ -103,7 +103,8 @@ for i in range(10):
     vuurpijl.setposition(0, 15 * i)
     vuurpijl.dot(5)
 ```
-Staat de punt nog in het midden? Heb je het zien bewegen?
+Staat de punt nog in het midden? Heb je het zien bewegen?  
+Jammer genoeg niet. Daar moeten we in de volgende stap nog wat voor doen.
 
 - Met `for i in range(10):` herhalen we de 3 ingesprongen regels eronder 10 keer
 - `vuurpijl.clear()` verwijdert de laatst getekende punt, zodat je alleen de nieuwe, verschoven punt ziet
